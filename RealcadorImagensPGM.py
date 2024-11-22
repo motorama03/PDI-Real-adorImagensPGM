@@ -7,13 +7,12 @@ def aplicar_transferencia_linear(imagem, a, b):
     Aplica uma função de transferência linear s = a*r + b na imagem.
     """
     array_imagem = np.array(imagem)
-    transformada = np.clip(a * array_imagem + b, 0, 255).astype(np.uint8)  # Garantir valores válidos
+    transformada = np.clip(a * array_imagem + b, 0, 255).astype(np.uint8)
     return Image.fromarray(transformada)
 
 # Abrir uma imagem PGM (tons de cinza)
 imagem_pgm = Image.open("/home/matias/Documentos/BCC2024-2/PDI/converteBinario/Entrada.pgm").convert("L")
 
-# Aplicar transformação linear (exemplo: aumentar contraste)
 a, b = 1.2, 10  # Parâmetros da função
 imagem_transformada = aplicar_transferencia_linear(imagem_pgm, a, b)
 
